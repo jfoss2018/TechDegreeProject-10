@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content
+  h1 Overdue Books
+  p
+    a(href="/books/new", class="button") Create New Book
+  p Filters
+    a(href="/books", class="filter")   All
+    ||
+    a(href="/books/overdue", class="filter") Overdue
+    ||
+    a(href="/books/checked_out", class="filter") Checked Out
+  table
+    thead
+      tr
+        th Title
+        th Author
+        th Genre
+        th Year Released
+    tbody
+
+      each loan in loans
+        tr
+          td
+            a(href=`/books/${loan.book_id}`) #{loan.Book.title}
+          td #{loan.Book.author}
+          td #{loan.Book.genre}
+          td #{loan.Book.first_published}

@@ -1,0 +1,66 @@
+extends layout.pug
+
+block content
+  if (errors)
+    ul.errors
+      each error in errors
+        li
+          =error.message
+
+  if (body)
+    h1 Book: #{body.title}
+  else
+    h1 Book: #{book.title}
+  form(action=`/books/${book.id}`, method="post")
+    p
+      label(for="title") Title
+      if (body)
+        input(id="title", type="text", name="title", value=`${body.title}`)
+      else
+        input(id="title", type="text", name="title", value=`${book.title}`)
+    p
+      label(for="author") Author
+      if (body)
+        input(id="author", type="text", name="author", value=`${body.author}`)
+      else
+        input(id="author", type="text", name="author", value=`${book.author}`)
+    p
+      label(for="genre") Genre
+      if (body)
+        input(id="genre", type="text", name="genre", value=`${body.genre}`)
+      else
+        input(id="genre", type="text", name="genre", value=`${book.genre}`)
+    p
+      label(for="first_published") First Published
+      if (body)
+        input(id="first_published", type="text", name="first_published", value=`${body.first_published}`)
+      else
+        input(id="first_published", type="text", name="first_published", value=`${book.first_published}`)
+    p
+      input(type="submit", value="Update")
+  h2 Loan History
+  table
+    thead
+      tr
+        th Book
+        th Patron
+        th Loaned on
+        th Return by
+        th Returned on
+        th Action
+    tbody
+
+      each loan in loans
+        tr
+          td
+            a(href=`/books/${loan.book_id}`) #{loan.Book.title}
+          td
+            a(href=`/patrons/${loan.patron_id}`) #{loan.Patron.first_name} #{loan.Patron.last_name}
+          td #{loan.loaned_on}
+          td #{loan.return_by}
+          td #{loan.returned_on}
+          if loan.returned_on
+            td
+          else
+            td
+              a(href=`/books/loan/${loan.id}/return`, class="button") Return Book

@@ -1,0 +1,38 @@
+extends layout.pug
+
+block content
+
+  include search_box
+
+  h1 Books
+  p
+    a(href="/books/new", class="button") Create New Book
+  p Filters
+    a(href="/books", class="filter")   All
+    ||
+    a(href="/books/overdue", class="filter") Overdue
+    ||
+    a(href="/books/checked_out", class="filter") Checked Out
+  table
+    thead
+      tr
+        th Title
+        th Author
+        th Genre
+        th Year Released
+    tbody
+
+      each book in books
+        tr
+          td
+            a(href=`/books/${book.id}`) #{book.title}
+          td #{book.author}
+          td #{book.genre}
+          td #{book.first_published}
+
+    div.pageButtons
+      ul.pageButtons
+        each val in buttons
+          li.pageButtons
+            form(action="/books", method="post")
+              input(type="submit", name="page", value=`${val}`)

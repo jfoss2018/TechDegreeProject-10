@@ -1,0 +1,46 @@
+extends layout.pug
+
+block content
+
+  include errors
+
+  h1 New Patron
+  form(action="/patrons/new", method="post")
+    p
+    label(for="first_name") First Name
+    if (body)
+      input(id="first_name", name="first_name", type="text", value=`${body.first_name}`)
+    else
+      input(id="first_name", name="first_name", type="text")
+    p
+    label(for="last_name") Last Name
+    if (body)
+      input(id="last_name", name="last_name", type="text", value=`${body.last_name}`)
+    else
+      input(id="last_name", name="last_name", type="text")
+    p
+    label(for="address") Address
+    if (body)
+      input(id="address", name="address", type="text", value=`${body.address}`)
+    else
+      input(id="address", name="address", type="text")
+    p
+    label(for="email") Email
+    if (body)
+      input(id="email", name="email", type="text", value=`${body.email}`)
+    else
+      input(id="email", name="email", type="text")
+    p
+    label(for="library_id") Library ID
+    if (body)
+      input(id="library_id", name="library_id", type="text", value=`${body.library_id}`)
+    else
+      input(id="library_id", name="library_id", type="text")
+    p
+    label(for="zip_code") Zip Code
+    if (body)
+      input(id="zip_code", name="zip_code", type="text", value=`${body.zip_code}`)
+    else
+      input(id="zip_code", name="zip_code", type="text")
+    p
+      input(type="submit", value="Create New Patron")

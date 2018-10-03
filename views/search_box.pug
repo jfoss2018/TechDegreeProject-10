@@ -1,0 +1,34 @@
+div.searchBoxDiv
+  form(action="/books", method="post")
+    p.searchBox
+      label(id="search_title_label", for="search_title") Title:
+      if (body)
+        if (body.search_title)
+          input(id="search_title", type="text", name="search_title", value=`${body.search_title}`)
+        else
+          input(id="search_title", type="text", name="search_title")
+      else
+        input(id="search_title", type="text", name="search_title")
+
+    p.searchBox
+      label(id="search_author_label", for="search_author") Author:
+      if (body)
+        if (body.search_author)
+          input(id="search_author", type="text", name="search_author", value=`${body.search_author}`)
+        else
+          input(id="search_author", type="text", name="search_author")
+      else
+        input(id="search_author", type="text", name="search_author")
+
+    p.searchBox
+      label(id="search_genre_label", for="search_genre") Genre:
+      if (body)
+        if (body.search_genre)
+          input(id="search_genre", type="text", name="search_genre", value=`${body.search_genre}`)
+        else
+          input(id="search_genre", type="text", name="search_genre")
+      else
+        input(id="search_genre", type="text", name="search_genre")
+
+    p.searchBox
+      input(id="search_submit", name="search", type="submit", value="Search")

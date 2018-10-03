@@ -2,8 +2,9 @@
   "name": "techdegreeproject-10",
   "version": "1.0.0",
   "description": "Project 10",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,5 +12,14 @@
     "url": "https://github.com/jfoss2018/TechDegreeProject-10.git"
   },
   "author": "James Foss",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "moment": "^2.22.2",
+    "pug": "^2.0.3",
+    "sequelize": "^4.39.0",
+    "sequelize-cli": "^4.1.1",
+    "sqlite3": "^4.0.2"
+  }
 }

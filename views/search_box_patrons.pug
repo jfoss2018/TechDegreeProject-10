@@ -1,0 +1,34 @@
+div.searchBoxDiv
+  form(action="/patrons", method="post")
+    p.searchBox
+      label(id="search_first_name_label", for="search_first_name") First Name:
+      if (body)
+        if (body.search_first_name)
+          input(id="search_first_name", type="text", name="search_first_name", value=`${body.search_first_name}`)
+        else
+          input(id="search_first_name", type="text", name="search_first_name")
+      else
+        input(id="search_first_name", type="text", name="search_first_name")
+
+    p.searchBox
+      label(id="search_last_name_label", for="search_last_name") Last Name:
+      if (body)
+        if (body.search_last_name)
+          input(id="search_last_name", type="text", name="search_last_name", value=`${body.search_last_name}`)
+        else
+          input(id="search_last_name", type="text", name="search_last_name")
+      else
+        input(id="search_last_name", type="text", name="search_last_name")
+
+    p.searchBox
+      label(id="search_library_id_label", for="search_library_id") Library ID:
+      if (body)
+        if (body.search_library_id)
+          input(id="search_library_id", type="text", name="search_library_id", value=`${body.search_library_id}`)
+        else
+          input(id="search_library_id", type="text", name="search_library_id")
+      else
+        input(id="search_library_id", type="text", name="search_library_id")
+
+    p.searchBox
+      input(id="search_submit", name="search", type="submit", value="Search")

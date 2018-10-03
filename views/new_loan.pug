@@ -1,0 +1,47 @@
+extends layout.pug
+
+block content
+
+  include errors
+
+  h1 New Loan
+  form(action="/loans/new", method="post")
+    p
+      label(for="book_id") Book
+      select(id="book_id", name="book_id")
+        each book in books
+          if !book.Loans[0]
+            if (body)
+              if (body.book_id == book.id)
+                option(selected="true", value=`${book.id}`) #{book.title}
+              else
+                option(value=`${book.id}`) #{book.title}
+            else
+              option(value=`${book.id}`) #{book.title}
+
+    p
+      label(for="patron_id") Patron
+      select(id="patron_id", name="patron_id")
+        each patron in patrons
+          if (body)
+            if (body.patron_id == patron.id)
+              option(selected="true", value=`${patron.id}`) #{patron.first_name} #{patron.last_name}
+            else
+              option(value=`${patron.id}`) #{patron.first_name} #{patron.last_name}
+          else
+            option(value=`${patron.id}`) #{patron.first_name} #{patron.last_name}
+
+    p
+      label(for="loaned_on") Loaned on:
+      if (body)
+        input(id="loaned_on", type="text", name="loaned_on", value=`${body.loaned_on}`)
+      else
+        input(id="loaned_on", type="text", name="loaned_on", value=`${moment().format('YYYY-MM-DD')}`)
+    p
+      label(for="return_by") Return by:
+      if (body)
+        input(id="return_by", type="text", name="return_by", value=`${body.return_by}`)
+      else
+        input(id="return_by", type="text", name="return_by", value=`${moment().day(7).format('YYYY-MM-DD')}`)
+    P
+      input(type="submit", value="Create New Loan")

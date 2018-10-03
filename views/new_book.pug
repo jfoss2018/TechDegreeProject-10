@@ -1,0 +1,39 @@
+extends layout.pug
+
+block content
+  if (errors)
+    ul.errors
+      each error in errors
+        li
+          =error.message
+
+
+
+  h1 New Book
+  form(action="/books/new", method="post")
+    P
+      label(for="title") Title
+      if (body)
+        input(id="title", name="title", type="text", value=`${body.title}`)
+      else
+        input(id="title", name="title", type="text")
+    P
+      label(for="author") Author
+      if (body)
+        input(id="author", name="author", type="text", value=`${body.author}`)
+      else
+        input(id="author", name="author", type="text")
+    P
+      label(for="genre") Genre
+      if (body)
+        input(id="genre", name="genre", type="text", value=`${body.genre}`)
+      else
+        input(id="genre", name="genre", type="text")
+    P
+      label(for="first_published") First Published
+      if (body)
+        input(id="first_published", name="first_published", type="text", value=`${body.first_published}`)
+      else
+        input(id="first_published", name="first_published" type="text")
+    P
+      input(type="submit", value="Create New Book")
