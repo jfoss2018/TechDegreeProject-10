@@ -4,7 +4,7 @@ This project introduces working with a database. In this case, SQLite and the SQ
 
 ### What does it do?
 
-This app is a functional library management system. It allows the user to create, edit, view, and delete books, patrons, and loans. It also includes many report views such as overdue books and overdue loans.
+This app is a functional library management system. It allows the user to create, edit, and view books, patrons, and loans. It also includes many report views such as overdue books and overdue loans.
 
 ### Additional Project Info for Grading
 
