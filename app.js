@@ -705,10 +705,12 @@ app.use((err, req, res, next) => {
   res.render('error', {error: err});
 });
 
+const port = process.env.PORT || 3000;
+
 // This syncs the database file with the table models before serving the application
 // on port 3000.
 sequelize.sync().then(function(){
-  app.listen(3000, () => {
+  app.listen(port, () => {
     console.log('The server is running.');
   });
 });
